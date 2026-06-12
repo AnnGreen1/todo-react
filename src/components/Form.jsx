@@ -1,17 +1,32 @@
+/**
+ * 添加新任务的表单组件
+ */
 import { useState } from "react";
 
+/**
+ * 表单组件
+ * @param {Object} props - 组件属性
+ * @param {Function} props.addTask - 添加任务的回调函数
+ */
 function Form(props) {
+  // 输入框的值
   const [name, setName] = useState('');
 
-  // NOTE: As written, this function has a bug: it doesn't prevent the user
-  // from submitting an empty form. This is left as an exercise for developers
-  // working through MDN's React tutorial.
+  /**
+   * 处理表单提交
+   * 注意：当前实现未阻止空表单提交，这是有意留给开发者的练习
+   * @param {Event} event - 表单提交事件
+   */
   function handleSubmit(event) {
     event.preventDefault();
     props.addTask(name);
     setName("");
   }
 
+  /**
+   * 处理输入框内容变化
+   * @param {Event} event - 输入事件
+   */
   function handleChange(event) {
     setName(event.target.value);
   }
